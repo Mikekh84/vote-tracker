@@ -40,15 +40,15 @@ var left = document.getElementById('left');
 var right = document.getElementById('right');
 
 tracker.randChoice = function (){
-  var randChoice1 = this.randNum();
-  var randChoice2 = this.randNum();
+  var randChoice1 = imagesArray[this.randNum()];
+  var randChoice2 = imagesArray[this.randNum()];
   while (randChoice1 === randChoice2) {
     console.log ("duplicate found");
     randChoice2 = this.randNum();
   }
-  var results = [randChoice1, randChoice2];
-  left.src = imagesArray[results[0]].path;
-  right.src = imagesArray[results[1]].path;
+  // var results = [randChoice1, randChoice2];
+  left.src = randChoice1.path;
+  right.src = randChoice2.path;
 }
 
 
@@ -78,6 +78,7 @@ left.addEventListener ('click', function(e) {
 
   // console.log("the winner is" + imagesArray[results[0]].votes);
   tracker.randChoice();
+
 });
 
 right.addEventListener ('click', function(e) {
@@ -91,31 +92,33 @@ right.addEventListener ('click', function(e) {
 tracker.randChoice();
 
 
+// var chartData = function() {
+// var data= [
+// {
+//   value: parseInt(imagesArray[0].votes),
+//   label: 'Coffee',
+//   color: '#811BD6',
+//   hightlight: '#811b33'
+// },
 
-var data= [
-{
-  value: 25,
-  label: 'Coffee',
-  color: '#811BD6',
-  hightlight: '#811b33'
-},
+// {
+//   value: parseInt(imagesArray[1].votes),
+//   label: 'Pike Sign',
+//   color: '#9CBABA',
+//   hightlight: '#9CBA99'
+// }
 
-{
-  value: 25,
-  label: 'Pike Sign',
-  color: '#9CBABA',
-  hightlight: '#9CBA99'
-}
+// ];
 
-];
+// var context =document.getElementById('chart').getContext('2d');
 
-var context =document.getElementById('chart').getContext('2d');
+// var seattleChart = new Chart(context).Doughnut(data, {
+//     animationSteps: 200,
+//     animationEasing: "easeOutBounce",
+//     animateRotate:  true,
+//     animateScale: true
 
-var seattleChart = new Chart(context).Doughnut(data, {
-    animationSteps: 200,
-    animationEasing: "easeOutBounce",
-    animateRotate:  true,
-    animateScale: true
+// });
+// };
 
-});
-
+// chartData();
